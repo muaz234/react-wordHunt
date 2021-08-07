@@ -2,11 +2,11 @@ import { TextField, ThemeProvider, createTheme, MenuItem } from '@material-ui/co
 import React from 'react'
 import  './Header.css';
 import categories from '../../data/category'
-const Header = ({category, setCategory, word, setWord}) => {
+const Header = ({category, setCategory, word, setWord, LightMode }) => {
     const darkTheme = createTheme({
         palette: {
-            primary: { main: '#FFF' },
-            type: 'dark',
+            primary: { main: LightMode ? '#000' : '#FFF' },
+            type: LightMode ? 'light' : 'dark',
         },
       });
 
