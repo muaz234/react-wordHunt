@@ -30,15 +30,21 @@ function App() {
   })(Switch);
   const dictionaryAPI  = async () => {
     try {
-      let data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/${category}/${word}`);
+      const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/${category}/${word}`);
       setMeanings(data.data);
     } catch (error) {
       console.log('error is  ---->  ', error)
     }
-  }
-  console.table(meanings);
-  useEffect(() => { dictionaryAPI(); 
-  }, [word, category])
+  };
+
+      // console.log(meanings);
+
+  useEffect(() => { 
+    dictionaryAPI(); 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [word, category]);
+
+
   return (
     <div className="App" style={{ height: '100vh', backgroundColor: LightMode ? '#fff' : '#282c34', color: LightMode  ? 'black' : 'white', transition: 'all 0.5s linear' }}>
       <Container maxWidth="md" style={{display: "flex", flexDirection: "column", height: "100vh", justifyContent: 'space-evenly'}}>
